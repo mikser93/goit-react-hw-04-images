@@ -7,7 +7,7 @@ export function ImageGallery({images, toggleModal}) {
     return (
         <ul className={styles.gallery}>
             {images.map((element, idx) => 
-                <ImageGalleryItem key={idx} webformatURL={element.webformatURL} largeImageURL={element.largeImageURL} idx={idx} toggleModal={toggleModal} />
+                <ImageGalleryItem key={idx} webformatURL={element.webformatURL} idx={idx} toggleModal={toggleModal} />
             )}
         </ul>
     );
@@ -16,7 +16,6 @@ export function ImageGallery({images, toggleModal}) {
 ImageGallery.propTypes = {
     images: PropTypes.arrayOf(
         PropTypes.shape({
-            largeImageURL: PropTypes.string.isRequired,
             webformatURL: PropTypes.string.isRequired,
         }),
     ),

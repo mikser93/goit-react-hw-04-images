@@ -1,10 +1,10 @@
 import styles from './ImageGalleryItem.module.css';
 import PropTypes from 'prop-types';
 
-export function ImageGalleryItem({idx, webformatURL, toggleModal, largeImageURL}) {
+export function ImageGalleryItem({idx, webformatURL, toggleModal}) {
     return (
         <li className={styles.galleryItem} >
-            <img id={idx} src={webformatURL} alt="depiction from set" onClick={ () => toggleModal(largeImageURL) } />
+            <img id={idx} src={webformatURL} alt="depiction from set" onClick={toggleModal} />
         </li>
     );
 };
