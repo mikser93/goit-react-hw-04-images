@@ -10,7 +10,7 @@ import styles from './App.module.css';
 
 
 function App() {
-  const [serchWord, setSerchWord] = useState(['']);
+  const [searchWord, setSearchWord] = useState('');
   const [page, setPage] = useState(1);
   const [images, setImages] = useState([]);
   const [largeImage, setLargeImage] = useState('');
@@ -21,13 +21,12 @@ function App() {
   useEffect(() => {
     getPhotos();
     // eslint-disable-next-line
-  }, [page, serchWord]);
+  }, [page, searchWord]);
 
   const onSubmit = (event) => {
     event.preventDefault();
-    setSerchWord([event.target[1].value]);
+    setSearchWord(event.target[1].value);
     setPage(1);
-    setImages([]);
     setIsEndOfGallery(false);
     event.target.reset();
   };
@@ -37,9 +36,10 @@ function App() {
   };
 
   const getPhotos = async () => {
+    setImages([]);
     setIsLoading(true);
     try {
-      requesterAPI(serchWord[0], page)
+      requesterAPI(searchWord, page)
         .then(response => {
           setIsEndOfGallery(images.length + response.hits.length === response.totalHits);
           setImages(prev => [...prev, ...response.hits]);
